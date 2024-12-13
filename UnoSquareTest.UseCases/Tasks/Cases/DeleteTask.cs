@@ -4,9 +4,9 @@ namespace UnoSquareTest.UseCases.Tasks.Cases
 {
     public class DeleteTask(ITasksRepository tasksRepository)
     {
-        public bool Execute(int id)
+        public async Task<bool> Execute(int id)
         {
-            return tasksRepository.DeleteTask(id).GetAwaiter().GetResult();
+            return await tasksRepository.DeleteTask(id);
         }
     }
 }

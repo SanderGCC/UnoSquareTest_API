@@ -8,10 +8,10 @@ namespace UnoSquareTest.UseCases.Tasks.Cases
 {
     public class AddTask(ITasksRepository tasksRepository)
     {
-        public TaskResponseDto Execute(AddTaskRequestDto request)
+        public async Task<TaskResponseDto> Execute(AddTaskRequestDto request)
         {
             TaskUS entity = request.ToDoEntity();
-            TaskUS taskUS = tasksRepository.AddTask(entity).GetAwaiter().GetResult();
+            TaskUS taskUS = await tasksRepository.AddTask(entity);
             TaskResponseDto taskResponseDto = taskUS.ToDo();
             return taskResponseDto;
         }

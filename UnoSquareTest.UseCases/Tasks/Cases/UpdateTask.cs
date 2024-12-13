@@ -7,10 +7,10 @@ namespace UnoSquareTest.UseCases.Tasks.Cases
 {
     public class UpdateTask(ITasksRepository tasksRepository)
     {
-        public TaskResponseDto Execute(int id, AddTaskRequestDto request)
+        public async Task<TaskResponseDto> Execute(int id, AddTaskRequestDto request)
         {
             TaskUS entity = request.ToDoEntity();
-            TaskUS taskUS = tasksRepository.UpdateTask(id, entity).GetAwaiter().GetResult();
+            TaskUS taskUS = await tasksRepository.UpdateTask(id, entity);
             TaskResponseDto taskResponseDto = taskUS.ToDo();
             return taskResponseDto;
         }

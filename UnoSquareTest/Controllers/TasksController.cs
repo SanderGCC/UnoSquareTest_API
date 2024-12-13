@@ -10,30 +10,30 @@ namespace UnoSquareTest.Controllers
     {
 
         [HttpGet]
-        public ActionResult<List<TaskResponseDto>> GetTasks()
+        public async Task<ActionResult<List<TaskResponseDto>>> GetTasks()
         {
-            List<TaskResponseDto> taskResponseDto = tasks.GetTasks.Execute();
+            List<TaskResponseDto> taskResponseDto = await tasks.GetTasks.Execute();
             return Ok(taskResponseDto);
         }
 
         [HttpPut("{id}")]
-        public ActionResult<TaskResponseDto> Post(int id, AddTaskRequestDto request)
+        public async Task<ActionResult<TaskResponseDto>> Post(int id, AddTaskRequestDto request)
         {
-            TaskResponseDto taskResponseDto = tasks.UpdateTask.Execute(id, request);
+            TaskResponseDto taskResponseDto = await tasks.UpdateTask.Execute(id, request);
             return Ok(taskResponseDto);
         }
 
         [HttpPost]
-        public ActionResult<TaskResponseDto> Post(AddTaskRequestDto request)
+        public async Task<ActionResult<TaskResponseDto>> Post(AddTaskRequestDto request)
         {
-            TaskResponseDto taskResponseDto = tasks.AddTask.Execute(request);
+            TaskResponseDto taskResponseDto = await tasks.AddTask.Execute(request);
             return Ok(taskResponseDto);
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<TaskResponseDto> Delete(int id)
+        public async Task<ActionResult<TaskResponseDto>> Delete(int id)
         {
-            bool response = tasks.DeleteTask.Execute(id);
+            bool response = await tasks.DeleteTask.Execute(id);
             if (!response) return NotFound();
             return NoContent();
         }

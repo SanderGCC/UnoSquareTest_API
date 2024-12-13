@@ -7,9 +7,9 @@ namespace UnoSquareTest.UseCases.Tasks.Cases
 {
     public class GetTasks(ITasksRepository tasksRepository)
     {
-        public List<TaskResponseDto> Execute()
+        public async Task<List<TaskResponseDto>> Execute()
         {
-            List<TaskUS> taskUS = tasksRepository.GetTasks().GetAwaiter().GetResult();
+            List<TaskUS> taskUS = await tasksRepository.GetTasks();
 
             List<TaskResponseDto> taskResponseDto = taskUS.Select(taskUS => taskUS.ToDo()).ToList();
 
