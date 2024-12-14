@@ -13,7 +13,8 @@ namespace UnoSquareTest.Data
 
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("UnoSquareTest.Data"));
             });
 
             services.AddScoped<ITasksRepository, TasksRepository>();
