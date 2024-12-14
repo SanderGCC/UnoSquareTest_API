@@ -21,6 +21,6 @@ El proyecto está basado en la arquitectura CORE-DRIVEN https://www.netmentor.es
    - API: Punto de partida de la API y controladores
    - DATA: Contiente los datos relacionados a la persistencia de la información, Entities, Migrations, DbContext además del uso del patrón repositorio para el manejo y centralización de las acciones ejecutadas en BD
    - DTOS: Contiene los Dtos de la aplicación (Request & Response)
-   - USE_CASES: Contiene los casos de uso en este caso de la entidad TASK, lo cual facilita los test unitarios
+   - USE_CASES: Contiene los casos de uso en este caso de la entidad TASK, lo cual facilita los test unitarios y contiene mappers manuales por medio de métodos de extensión para ganar velocidad y evitar el uso de librerías.
 
 
